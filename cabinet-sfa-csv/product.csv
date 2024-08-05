@@ -1,0 +1,17 @@
+﻿product  (14);;;;
+;;;;
+ID;id;name;description;frame_of_reference
+7;3de94f61-527a-11ef-b1fb-709cd1628c88;3de94f61-527a-11ef-b1fb-709cd1628c88;;(1) product_context 8
+29;3de94f61-527a-11ef-b1fb-709cd1628c88;3de94f61-527a-11ef-b1fb-709cd1628c88;;(1) product_context 30
+72;Top Panel;Top Panel;;(1) product_context 73
+95;Top Panel_part;Top Panel_part;;(1) product_context 96
+444;Bottom Panel;Bottom Panel;;(1) product_context 445
+467;Bottom Panel_part;Bottom Panel_part;;(1) product_context 468
+816;Left Side Panel;Left Side Panel;;(1) product_context 817
+839;Left Side Panel_part;Left Side Panel_part;;(1) product_context 840
+1188;Right Side Panel;Right Side Panel;;(1) product_context 1189
+1211;Right Side Panel_part;Right Side Panel_part;;(1) product_context 1212
+1560;Back Panel;Back Panel;;(1) product_context 1561
+1583;Back Panel_part;Back Panel_part;;(1) product_context 1584
+1932;Front Panel;Front Panel;;(1) product_context 1933
+1955;Front Panel_part;Front Panel_part;;(1) product_context 1956

@@ -1,0 +1,17 @@
+﻿(geometric_representation_context)(global_uncertainty_assigned_context)(global_unit_assigned_context)  (14);;;;;
+;;;;;
+ID;context_identifier;context_type;coordinate_space_dimension;uncertainty;units
+19;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 23;(1) (length_unit) (si_unit) 20   (1) (plane_angle_unit) (si_unit) 21   (1) (si_unit) (solid_angle_unit) 22
+57;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 61;(1) (length_unit) (si_unit) 58   (1) (plane_angle_unit) (si_unit) 59   (1) (si_unit) (solid_angle_unit) 60
+80;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 84;(1) (length_unit) (si_unit) 81   (1) (plane_angle_unit) (si_unit) 82   (1) (si_unit) (solid_angle_unit) 83
+429;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 433;(1) (length_unit) (si_unit) 430   (1) (plane_angle_unit) (si_unit) 431   (1) (si_unit) (solid_angle_unit) 432
+452;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 456;(1) (length_unit) (si_unit) 453   (1) (plane_angle_unit) (si_unit) 454   (1) (si_unit) (solid_angle_unit) 455
+801;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 805;(1) (length_unit) (si_unit) 802   (1) (plane_angle_unit) (si_unit) 803   (1) (si_unit) (solid_angle_unit) 804
+824;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 828;(1) (length_unit) (si_unit) 825   (1) (plane_angle_unit) (si_unit) 826   (1) (si_unit) (solid_angle_unit) 827
+1173;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1177;(1) (length_unit) (si_unit) 1174   (1) (plane_angle_unit) (si_unit) 1175   (1) (si_unit) (solid_angle_unit) 1176
+1196;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1200;(1) (length_unit) (si_unit) 1197   (1) (plane_angle_unit) (si_unit) 1198   (1) (si_unit) (solid_angle_unit) 1199
+1545;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1549;(1) (length_unit) (si_unit) 1546   (1) (plane_angle_unit) (si_unit) 1547   (1) (si_unit) (solid_angle_unit) 1548
+1568;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1572;(1) (length_unit) (si_unit) 1569   (1) (plane_angle_unit) (si_unit) 1570   (1) (si_unit) (solid_angle_unit) 1571
+1917;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1921;(1) (length_unit) (si_unit) 1918   (1) (plane_angle_unit) (si_unit) 1919   (1) (si_unit) (solid_angle_unit) 1920
+1940;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 1944;(1) (length_unit) (si_unit) 1941   (1) (plane_angle_unit) (si_unit) 1942   (1) (si_unit) (solid_angle_unit) 1943
+2289;Context #1;3D Context with UNIT and UNCERTAINTY;3;(1) uncertainty_measure_with_unit 2293;(1) (length_unit) (si_unit) 2290   (1) (plane_angle_unit) (si_unit) 2291   (1) (si_unit) (solid_angle_unit) 2292

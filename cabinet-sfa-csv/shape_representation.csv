@@ -1,0 +1,11 @@
+﻿shape_representation  (8);;;
+;;;
+ID;name;items;context_of_items
+10;;(2) axis2_placement_3d 11 15;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 19
+32;;(7) axis2_placement_3d 11 33 37 41 45 49 53;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 57
+75;;(2) axis2_placement_3d 11 76;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 80
+447;;(2) axis2_placement_3d 11 448;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 452
+819;;(2) axis2_placement_3d 11 820;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 824
+1191;;(2) axis2_placement_3d 11 1192;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1196
+1563;;(2) axis2_placement_3d 11 1564;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1568
+1935;;(2) axis2_placement_3d 11 1936;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1940

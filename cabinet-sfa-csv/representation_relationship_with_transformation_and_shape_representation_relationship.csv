@@ -1,0 +1,16 @@
+﻿(representation_relationship_with_transformation)(shape_representation_relationship)  (13);;;;;
+;;;;;
+ID;name;description;rep_1;rep_2;transformation_operator
+63;;;shape_representation 32;shape_representation 10;item_defined_transformation 64
+86;;;shape_representation 75;shape_representation 32;item_defined_transformation 87
+435;;;advanced_brep_shape_representation 98;shape_representation 75;item_defined_transformation 436
+458;;;shape_representation 447;shape_representation 32;item_defined_transformation 459
+807;;;advanced_brep_shape_representation 470;shape_representation 447;item_defined_transformation 808
+830;;;shape_representation 819;shape_representation 32;item_defined_transformation 831
+1179;;;advanced_brep_shape_representation 842;shape_representation 819;item_defined_transformation 1180
+1202;;;shape_representation 1191;shape_representation 32;item_defined_transformation 1203
+1551;;;advanced_brep_shape_representation 1214;shape_representation 1191;item_defined_transformation 1552
+1574;;;shape_representation 1563;shape_representation 32;item_defined_transformation 1575
+1923;;;advanced_brep_shape_representation 1586;shape_representation 1563;item_defined_transformation 1924
+1946;;;shape_representation 1935;shape_representation 32;item_defined_transformation 1947
+2295;;;advanced_brep_shape_representation 1958;shape_representation 1935;item_defined_transformation 2296

@@ -1,0 +1,17 @@
+﻿shape_definition_representation  (14);;
+;;
+ID;definition;used_representation
+3;product_definition_shape 4;shape_representation 10
+25;product_definition_shape 26;shape_representation 32
+68;product_definition_shape 69;shape_representation 75
+91;product_definition_shape 92;advanced_brep_shape_representation 98
+440;product_definition_shape 441;shape_representation 447
+463;product_definition_shape 464;advanced_brep_shape_representation 470
+812;product_definition_shape 813;shape_representation 819
+835;product_definition_shape 836;advanced_brep_shape_representation 842
+1184;product_definition_shape 1185;shape_representation 1191
+1207;product_definition_shape 1208;advanced_brep_shape_representation 1214
+1556;product_definition_shape 1557;shape_representation 1563
+1579;product_definition_shape 1580;advanced_brep_shape_representation 1586
+1928;product_definition_shape 1929;shape_representation 1935
+1951;product_definition_shape 1952;advanced_brep_shape_representation 1958

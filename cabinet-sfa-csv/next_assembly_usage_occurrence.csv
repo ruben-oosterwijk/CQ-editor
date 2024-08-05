@@ -1,0 +1,16 @@
+﻿next_assembly_usage_occurrence  (13);;;;;;
+;;;;;;
+ID;id;name;description;relating_product_definition;related_product_definition;reference_designator
+66;13;3de94f61-527a-11ef-b1fb-709cd1628c88;;product_definition 5  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);
+89;2;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 70  (Top Panel);
+438;1;;;product_definition 70  (Top Panel);product_definition 93  (Top Panel_part);
+461;4;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 442  (Bottom Panel);
+810;3;;;product_definition 442  (Bottom Panel);product_definition 465  (Bottom Panel_part);
+833;6;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 814  (Left Side Panel);
+1182;5;;;product_definition 814  (Left Side Panel);product_definition 837  (Left Side Panel_part);
+1205;8;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 1186  (Right Side Panel);
+1554;7;;;product_definition 1186  (Right Side Panel);product_definition 1209  (Right Side Panel_part);
+1577;10;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 1558  (Back Panel);
+1926;9;;;product_definition 1558  (Back Panel);product_definition 1581  (Back Panel_part);
+1949;12;;;product_definition 27  (3de94f61-527a-11ef-b1fb-709cd1628c88);product_definition 1930  (Front Panel);
+2298;11;;;product_definition 1930  (Front Panel);product_definition 1953  (Front Panel_part);

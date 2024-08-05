@@ -1,0 +1,9 @@
+﻿advanced_brep_shape_representation  (6);;;
+;;;
+ID;name;items;context_of_items
+98;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 99;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 429
+470;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 471;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 801
+842;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 843;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1173
+1214;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 1215;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1545
+1586;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 1587;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 1917
+1958;;(1) axis2_placement_3d 11   (1) manifold_solid_brep 1959;(geometric_representation_context) (global_uncertainty_assigned_context) (global_unit_assigned_context) 2289

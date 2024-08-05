@@ -1,0 +1,30 @@
+﻿product_definition_shape  (27);;;
+;;;
+ID;name;description;definition
+4;;;product_definition 5
+26;;;product_definition 27
+65;Placement;Placement of an item;next_assembly_usage_occurrence 66
+69;;;product_definition 70
+88;Placement;Placement of an item;next_assembly_usage_occurrence 89
+92;;;product_definition 93
+437;Placement;Placement of an item;next_assembly_usage_occurrence 438
+441;;;product_definition 442
+460;Placement;Placement of an item;next_assembly_usage_occurrence 461
+464;;;product_definition 465
+809;Placement;Placement of an item;next_assembly_usage_occurrence 810
+813;;;product_definition 814
+832;Placement;Placement of an item;next_assembly_usage_occurrence 833
+836;;;product_definition 837
+1181;Placement;Placement of an item;next_assembly_usage_occurrence 1182
+1185;;;product_definition 1186
+1204;Placement;Placement of an item;next_assembly_usage_occurrence 1205
+1208;;;product_definition 1209
+1553;Placement;Placement of an item;next_assembly_usage_occurrence 1554
+1557;;;product_definition 1558
+1576;Placement;Placement of an item;next_assembly_usage_occurrence 1577
+1580;;;product_definition 1581
+1925;Placement;Placement of an item;next_assembly_usage_occurrence 1926
+1929;;;product_definition 1930
+1948;Placement;Placement of an item;next_assembly_usage_occurrence 1949
+1952;;;product_definition 1953
+2297;Placement;Placement of an item;next_assembly_usage_occurrence 2298

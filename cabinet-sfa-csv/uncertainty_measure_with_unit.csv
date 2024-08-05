@@ -1,0 +1,17 @@
+﻿uncertainty_measure_with_unit  (14);;;;
+;;;;
+ID;value_component;unit_component;name;description
+23;1,00E-07;(length_unit) (si_unit) 20;distance_accuracy_value;confusion accuracy
+61;1,00E-07;(length_unit) (si_unit) 58;distance_accuracy_value;confusion accuracy
+84;1,00E-07;(length_unit) (si_unit) 81;distance_accuracy_value;confusion accuracy
+433;1,00E-07;(length_unit) (si_unit) 430;distance_accuracy_value;confusion accuracy
+456;1,00E-07;(length_unit) (si_unit) 453;distance_accuracy_value;confusion accuracy
+805;1,00E-07;(length_unit) (si_unit) 802;distance_accuracy_value;confusion accuracy
+828;1,00E-07;(length_unit) (si_unit) 825;distance_accuracy_value;confusion accuracy
+1177;1,00E-07;(length_unit) (si_unit) 1174;distance_accuracy_value;confusion accuracy
+1200;1,00E-07;(length_unit) (si_unit) 1197;distance_accuracy_value;confusion accuracy
+1549;1,00E-07;(length_unit) (si_unit) 1546;distance_accuracy_value;confusion accuracy
+1572;1,00E-07;(length_unit) (si_unit) 1569;distance_accuracy_value;confusion accuracy
+1921;1,00E-07;(length_unit) (si_unit) 1918;distance_accuracy_value;confusion accuracy
+1944;1,00E-07;(length_unit) (si_unit) 1941;distance_accuracy_value;confusion accuracy
+2293;1,00E-07;(length_unit) (si_unit) 2290;distance_accuracy_value;confusion accuracy

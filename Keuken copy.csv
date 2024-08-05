@@ -1,0 +1,4 @@
+Material corpus (Each unique entry will become a unique color),Material front (Each unique entry will become a unique color),Name of cabinet (parent component),Corpus Height (mm),Corpus  Width (mm),Corpus Dept (mm),Global Thickness (mm),Shelf amount,"Front type (0=none, -1=door, -2=2 doors, n>0=drawer number)","Connection type (0=sides win, 1=top/bottom win, 2=mitered)",Thickness override (top),Thickness override (bottom),Thickness override (left),Thickness override (right),Thickness override (front),Thickness override (back),Thickness override (shelf)
+blue,brown,Corpus 1,900,1800,600,18,2,1,1,,,,,20,,
+red,aawd,Corpus 21,900,1800,600,18,2,2,1,,,,,20,,
+awd,awd,Corpus 221,900,1800,600,18,2,2,1,,,,,20,,

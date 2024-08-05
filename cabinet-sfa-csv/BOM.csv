@@ -1,0 +1,19 @@
+﻿cabinet.step  (2024-08-04T17:57:25);;
+;;
+Qty;Parts (6);
+1;Back Panel_part;
+1;Bottom Panel_part;
+1;Front Panel_part;
+1;Left Side Panel_part;
+1;Right Side Panel_part;
+1;Top Panel_part;
+;;
+Qty;Assemblies (7);Components
+1;3de94f61-527a-11ef-b1fb-709cd1628c88;"(1) Back Panel  (1) Bottom Panel  (1) Front Panel  (1) Left Side Panel  
+(1) Right Side Panel  (1) Top Panel"
+1;Back Panel;(1) Back Panel_part
+1;Bottom Panel;(1) Bottom Panel_part
+1;Front Panel;(1) Front Panel_part
+1;Left Side Panel;(1) Left Side Panel_part
+1;Right Side Panel;(1) Right Side Panel_part
+1;Top Panel;(1) Top Panel_part

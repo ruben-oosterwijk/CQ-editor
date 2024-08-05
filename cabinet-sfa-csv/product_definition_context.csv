@@ -1,0 +1,17 @@
+﻿product_definition_context  (14);;;
+;;;
+ID;name;frame_of_reference;life_cycle_stage
+9;part definition;application_context 2;design
+31;part definition;application_context 2;design
+74;part definition;application_context 2;design
+97;part definition;application_context 2;design
+446;part definition;application_context 2;design
+469;part definition;application_context 2;design
+818;part definition;application_context 2;design
+841;part definition;application_context 2;design
+1190;part definition;application_context 2;design
+1213;part definition;application_context 2;design
+1562;part definition;application_context 2;design
+1585;part definition;application_context 2;design
+1934;part definition;application_context 2;design
+1957;part definition;application_context 2;design

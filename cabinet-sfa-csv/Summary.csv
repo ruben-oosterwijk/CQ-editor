@@ -1,0 +1,61 @@
+﻿STEP Directory;C:\Users\Betronic\Documents\Cutr\Corpus configurator\CQ-editor;;;;;;;;;
+STEP File;cabinet.step;;;;;;;;;
+Excel File;cabinet-sfa.xlsx;;;;;;;;;
+Application;Open CASCADE 7.7;;;;;;;;;
+Timestamp;2024-08-04T17:57:25;;;;;;;;;
+Total Entities;2299;;;;;;;;;
+Schema;AP214e1;;;;;;;;;
+;;;;;;;;;;
+Entity;Count;;;;;;;;;
+advanced_brep_shape_representation;6;;;;;;;;;
+context_dependent_shape_representation;13;;;;;;;;;
+definitional_representation;144;;;;;;;;;
+"(geometric_representation_context)
+   (global_uncertainty_assigned_context)
+   (global_unit_assigned_context)";14;;;;;;;;;
+"(geometric_representation_context)
+   (parametric_representation_context)";144;;;;;;;;;
+item_defined_transformation;13;;;;;;;;;
+"(representation_relationship_with_transformation)
+   (shape_representation_relationship)";13;;;;;;;;;
+shape_definition_representation;14;;;;;;;;;
+shape_representation;8;;;;;;;;;
+application_context;1;;;;;;;;;
+application_protocol_definition;1;;;;;;;;;
+next_assembly_usage_occurrence  [Assembly];13;;;;;;;;;
+product;14;;;;;;;;;
+product_context;14;;;;;;;;;
+product_definition;14;;;;;;;;;
+product_definition_context;14;;;;;;;;;
+product_definition_formation;14;;;;;;;;;
+product_definition_shape;27;;;;;;;;;
+product_related_product_category;14;;;;;;;;;
+"(length_unit)
+   (si_unit)";14;;;;;;;;;
+"(plane_angle_unit)
+   (si_unit)";14;;;;;;;;;
+"(si_unit)
+   (solid_angle_unit)";14;;;;;;;;;
+uncertainty_measure_with_unit;14;;;;;;;;;
+;;;;;;;;;;
+;;;;;;;;;;
+Entity types not processed (16);;;;;;;;;;
+advanced_face;36;;;;;;;;;
+axis2_placement_3d;50;;;;;;;;;
+cartesian_point;314;;;;;;;;;
+closed_shell;6;;;;;;;;;
+direction;316;;;;;;;;;
+edge_curve;72;;;;;;;;;
+edge_loop;36;;;;;;;;;
+face_bound;36;;;;;;;;;
+line;216;;;;;;;;;
+manifold_solid_brep;6;;;;;;;;;
+oriented_edge;144;;;;;;;;;
+pcurve;144;;;;;;;;;
+plane;36;;;;;;;;;
+surface_curve;72;;;;;;;;;
+vector;216;;;;;;;;;
+vertex_point;48;;;;;;;;;
+;;;;;;;;;;
+NIST STEP File Analyzer and Viewer 5.10;;;;;;;;;;
+Sun Aug 04 17:58:50 CEST 2024;;;;;;;;;;
