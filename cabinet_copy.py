@@ -34,12 +34,38 @@ def get_panel_thickness(global_thickness: float, panel_thickness_override: str) 
     """
     return global_thickness if panel_thickness_override is None or panel_thickness_override.strip() == "" else float(panel_thickness_override)
 
+def create_hinges(door_height: float, hinge_diameter: float, hinge_length: float) -> List[cq.Workplane]:
+    """
+    Create hinges for the door based on its height.
+    """
+    if door_height <= 600:
+        num_hinges = 2
+    elif door_height <= 900:
+        num_hinges = 3
+    elif door_height <= 2000:
+        num_hinges = 4
+    elif door_height <= 2400:
+        num_hinges = 5
+    elif door_height <= 3000:
+        num_hinges = 6
+    else:
+        raise ValueError("Invalid door height for hinge calculation")
+
+    hinges = []
+    spacing = (door_height - 2 * 90) / (num_hinges - 1)
+    for i in range(num_hinges):
+        hinge_position = 90 + i * spacing
+        hinge = cq.Workplane("XY").cylinder(hinge_length, hinge_diameter/2).translate((0, hinge_position, 0))
+        hinges.append(hinge)
+
+    return hinges
+
 def create_cabinet(width: float, height: float, depth: float, front_type: int, global_thickness: float,
                    top_thickness: float, bottom_thickness: float, left_thickness: float, right_thickness: float,
                    back_thickness: float, front_thickness: float, shelf_thickness: float, shelf_amount: int,
-                   connector_type: int, corpus_color: cq.Color, front_color: cq.Color) -> Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane]]:
+                   connector_type: int, corpus_color: cq.Color, front_color: cq.Color, add_hardware: bool) -> Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]]:
     """
-    Create a 3D model of the cabinet.
+    Create a 3D model of the cabinet, including panels, fronts, shelves, and optional hardware.
     """
     adjusted_depth = depth - front_thickness if front_type != FrontType.NONE else depth
 
@@ -63,14 +89,32 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
     }
 
     fronts = []
+    hinges = []
+    hinge_diameter = 35
+    hinge_length = 13
+    distance_hole_edge_of_front = 5
     if front_type == FrontType.DOOR:
-        fronts = [cq.Workplane("XY").box(width, height, front_thickness).translate((0, height / 2, adjusted_depth / 2 + front_thickness / 2))]
+        door = cq.Workplane("XY").box(width, height, front_thickness).translate((0, height / 2, adjusted_depth / 2 + front_thickness / 2))
+        if add_hardware:
+            hinge_parts = create_hinges(height, hinge_diameter, hinge_length)
+            for hinge in hinge_parts:
+                zeroX = width / 2 - hinge_diameter / 2
+                positionX = zeroX - distance_hole_edge_of_front
+                zeroZ = adjusted_depth / 2 + hinge_length/2
+                door = door.cut(hinge.translate((positionX, 0, zeroZ)))
+                hinges.append(hinge.translate((positionX, 0, zeroZ)))
+        fronts = [door]
     elif front_type == FrontType.DOUBLE_DOORS:
         door_width = width / 2
-        fronts = [
-            cq.Workplane("XY").box(door_width, height, front_thickness).translate((-width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2)),
-            cq.Workplane("XY").box(door_width, height, front_thickness).translate((width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2))
-        ]
+        left_door = cq.Workplane("XY").box(door_width, height, front_thickness).translate((-width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2))
+        right_door = cq.Workplane("XY").box(door_width, height, front_thickness).translate((width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2))
+        if add_hardware:
+            hinge_parts = create_hinges(height, hinge_diameter, hinge_length)
+            for hinge in hinge_parts:
+                left_door = left_door.cut(hinge.translate((door_width / 2 + hinge_length / 2, 0, 0)))
+                right_door = right_door.cut(hinge.translate((-door_width / 2 - hinge_length / 2, 0, 0)))
+                hinges.append(hinge)
+        fronts = [left_door, right_door]
     elif front_type > 0:  # drawers
         drawer_height = height / front_type
         for i in range(front_type):
@@ -85,7 +129,7 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
             shelf_height = bottom_thickness + (i + 1) * shelf_spacing
             shelves.append(cq.Workplane("XY").box(shelf_width, shelf_thickness, shelf_depth).translate((-width / 2 + left_thickness + shelf_width / 2, shelf_height, -depth / 2 + front_thickness + shelf_depth / 2)))
 
-    return panels, fronts, shelves
+    return panels, fronts, shelves, hinges
 
 def read_csv(file_path: str) -> List[Dict[str, str]]:
     """
@@ -95,17 +139,19 @@ def read_csv(file_path: str) -> List[Dict[str, str]]:
         reader = csv.DictReader(file)
         return list(reader)
 
-def add_cabinet_to_assembly(assembly: cq.Assembly, name: str, parts: Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane]], color: cq.Color, position: float, width: float, depth: float):
+def add_cabinet_to_assembly(assembly: cq.Assembly, name: str, parts: Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]], corpus_color: cq.Color, front_color: cq.Color, position: float, width: float, depth: float):
     """
     Add cabinet parts to the main assembly.
     """
-    panels, fronts, shelves = parts
+    panels, fronts, shelves, hinges = parts
     for part_name, part in panels.items():
-        assembly.add(part, name=part_name.capitalize(), loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=color)
+        assembly.add(part, name=part_name.capitalize(), loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=corpus_color)
     for i, front in enumerate(fronts):
-        assembly.add(front, name=f"Front {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=color)
+        assembly.add(front, name=f"Front {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=front_color)
     for i, shelf in enumerate(shelves):
-        assembly.add(shelf, name=f"Shelf {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=color)
+        assembly.add(shelf, name=f"Shelf {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=corpus_color)
+    for i, hinge in enumerate(hinges):
+        assembly.add(hinge, name=f"Hinge {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=cq.Color(0.5, 0.5, 0.5))
 
 def main():
     """
@@ -140,6 +186,7 @@ def main():
     for data in data_rows:
         corpus_material = data["Material corpus (Each unique entry will become a unique color)"]
         front_material = data["Material front (Each unique entry will become a unique color)"]
+        add_hardware = int(data["Hardware (0=no, 1=yes)"])
 
         cabinet_name = data["Name of cabinet (parent component)"]
         width = float(data["Corpus  Width (mm)"])
@@ -164,10 +211,10 @@ def main():
         parts = create_cabinet(width, height, depth, front_type, global_thickness,
                                top_thickness, bottom_thickness, left_thickness,
                                right_thickness, back_thickness, front_thickness, shelf_thickness, shelf_amount, connector_type,
-                               corpus_color, front_color)
+                               corpus_color, front_color, add_hardware)
 
         cabinet_assembly = cq.Assembly(name=cabinet_name)
-        add_cabinet_to_assembly(cabinet_assembly, cabinet_name, parts, corpus_color, current_x_position, width, depth)
+        add_cabinet_to_assembly(cabinet_assembly, cabinet_name, parts, corpus_color, front_color, current_x_position, width, depth)
 
         parent_assembly.add(cabinet_assembly)
 
