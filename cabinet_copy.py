@@ -160,8 +160,9 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
         for i in range(front_type):
             fronts.append(cq.Workplane("XY").box(width, drawer_height, front_thickness).translate((0, drawer_height / 2 + i * drawer_height, adjusted_depth / 2 + front_thickness / 2)))
 
-    if bottom_thickness > 0:
-        feet = create_feet(width, depth, foot_diameter, foot_height)
+    if add_hardware:
+        if bottom_thickness > 0:
+            feet = create_feet(width, depth, foot_diameter, foot_height)
 
     shelves = []
     if shelf_amount > 0:
