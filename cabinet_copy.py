@@ -60,10 +60,37 @@ def create_hinges(door_height: float, hinge_diameter: float, hinge_length: float
 
     return hinges
 
+def create_feet(width: float, depth: float, foot_diameter: float, foot_height: float) -> List[cq.Workplane]:
+    """
+    Create feet for the cabinet based on its dimensions.
+    """
+    feet = []
+
+    # Front feet
+    front_left = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((-width / 2 + 50, 0, -depth / 2 + 150))
+    front_right = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((width / 2 - 50, 0, -depth / 2 + 150))
+    feet.extend([front_left, front_right])
+
+    # Back feet
+    back_left = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((-width / 2 + 50, 0, depth / 2 - 100))
+    back_right = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((width / 2 - 50, 0, depth / 2 - 100))
+    feet.extend([back_left, back_right])
+
+    # Add extra feet if necessary
+    if width > 600:
+        num_extra_feet = int(width // 600)
+        spacing = width / (num_extra_feet + 1)
+        for i in range(1, num_extra_feet + 1):
+            extra_front = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((-width / 2 + i * spacing, 0, -depth / 2 + 150))
+            extra_back = cq.Workplane("XY").cylinder(foot_height, foot_diameter / 2).translate((-width / 2 + i * spacing, 0, depth / 2 - 100))
+            feet.extend([extra_front, extra_back])
+
+    return feet
+
 def create_cabinet(width: float, height: float, depth: float, front_type: int, global_thickness: float,
                    top_thickness: float, bottom_thickness: float, left_thickness: float, right_thickness: float,
                    back_thickness: float, front_thickness: float, shelf_thickness: float, shelf_amount: int,
-                   connector_type: int, corpus_color: cq.Color, front_color: cq.Color, add_hardware: bool) -> Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]]:
+                   connector_type: int, corpus_color: cq.Color, front_color: cq.Color, add_hardware: bool) -> Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]]:
     """
     Create a 3D model of the cabinet, including panels, fronts, shelves, and optional hardware.
     """
@@ -90,9 +117,13 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
 
     fronts = []
     hinges = []
+    feet = []
     hinge_diameter = 35
     hinge_length = 13
+    foot_diameter = 50
+    foot_height = 100
     distance_hole_edge_of_front = 5
+
     if front_type == FrontType.DOOR:
         door = cq.Workplane("XY").box(width, height, front_thickness).translate((0, height / 2, adjusted_depth / 2 + front_thickness / 2))
         if add_hardware:
@@ -109,16 +140,28 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
         left_door = cq.Workplane("XY").box(door_width, height, front_thickness).translate((-width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2))
         right_door = cq.Workplane("XY").box(door_width, height, front_thickness).translate((width / 4, height / 2, adjusted_depth / 2 + front_thickness / 2))
         if add_hardware:
-            hinge_parts = create_hinges(height, hinge_diameter, hinge_length)
-            for hinge in hinge_parts:
-                left_door = left_door.cut(hinge.translate((door_width / 2 + hinge_length / 2, 0, 0)))
-                right_door = right_door.cut(hinge.translate((-door_width / 2 - hinge_length / 2, 0, 0)))
-                hinges.append(hinge)
+            hinge_parts_left = create_hinges(height, hinge_diameter, hinge_length)
+            hinge_parts_right = create_hinges(height, hinge_diameter, hinge_length)
+            for hinge in hinge_parts_left:
+                zeroX = door_width / 2 - hinge_diameter / 2
+                positionX = -zeroX + distance_hole_edge_of_front
+                zeroZ = adjusted_depth / 2 + hinge_length / 2
+                left_door = left_door.cut(hinge.translate((positionX, 0, zeroZ)))
+                hinges.append(hinge.translate((positionX - door_width, height / 2, zeroZ)))
+            for hinge in hinge_parts_right:
+                zeroX = door_width / 2 - hinge_diameter / 2
+                positionX = zeroX - distance_hole_edge_of_front
+                zeroZ = adjusted_depth / 2 + hinge_length / 2
+                right_door = right_door.cut(hinge.translate((positionX, 0, zeroZ)))
+                hinges.append(hinge.translate((positionX + door_width, height / 2, zeroZ)))
         fronts = [left_door, right_door]
     elif front_type > 0:  # drawers
         drawer_height = height / front_type
         for i in range(front_type):
             fronts.append(cq.Workplane("XY").box(width, drawer_height, front_thickness).translate((0, drawer_height / 2 + i * drawer_height, adjusted_depth / 2 + front_thickness / 2)))
+
+    if bottom_thickness > 0:
+        feet = create_feet(width, depth, foot_diameter, foot_height)
 
     shelves = []
     if shelf_amount > 0:
@@ -129,7 +172,7 @@ def create_cabinet(width: float, height: float, depth: float, front_type: int, g
             shelf_height = bottom_thickness + (i + 1) * shelf_spacing
             shelves.append(cq.Workplane("XY").box(shelf_width, shelf_thickness, shelf_depth).translate((-width / 2 + left_thickness + shelf_width / 2, shelf_height, -depth / 2 + front_thickness + shelf_depth / 2)))
 
-    return panels, fronts, shelves, hinges
+    return panels, fronts, shelves, hinges, feet
 
 def read_csv(file_path: str) -> List[Dict[str, str]]:
     """
@@ -139,11 +182,11 @@ def read_csv(file_path: str) -> List[Dict[str, str]]:
         reader = csv.DictReader(file)
         return list(reader)
 
-def add_cabinet_to_assembly(assembly: cq.Assembly, name: str, parts: Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]], corpus_color: cq.Color, front_color: cq.Color, position: float, width: float, depth: float):
+def add_cabinet_to_assembly(assembly: cq.Assembly, name: str, parts: Tuple[Dict[str, cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane], List[cq.Workplane]], corpus_color: cq.Color, front_color: cq.Color, position: float, width: float, depth: float):
     """
     Add cabinet parts to the main assembly.
     """
-    panels, fronts, shelves, hinges = parts
+    panels, fronts, shelves, hinges, feet = parts
     for part_name, part in panels.items():
         assembly.add(part, name=part_name.capitalize(), loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=corpus_color)
     for i, front in enumerate(fronts):
@@ -152,6 +195,8 @@ def add_cabinet_to_assembly(assembly: cq.Assembly, name: str, parts: Tuple[Dict[
         assembly.add(shelf, name=f"Shelf {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=corpus_color)
     for i, hinge in enumerate(hinges):
         assembly.add(hinge, name=f"Hinge {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=cq.Color(0.5, 0.5, 0.5))
+    for i, foot in enumerate(feet):
+        assembly.add(foot, name=f"Foot {i + 1}", loc=cq.Location(cq.Vector(position + width / 2, 0, -depth / 2)), color=cq.Color(0.5, 0.5, 0.5))
 
 def main():
     """
